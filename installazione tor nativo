@@ -1,0 +1,27 @@
+INSTALLAZIONE TOR (nativo)
+DA ROOT
+sudo su
+
+*mettere password*
+
+dpkg --print-architecture
+
+apt install apt-transport-https
+
+nano /etc/apt/sources.list.d/tor.list
+
+deb     [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org bookworm main
+deb-src [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org bookworm main
+
+wget -qO- https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg --dearmor | tee /usr/share/keyrings/tor-archive-keyring.gpg >/dev/null
+
+apt update
+
+apt install tor deb.torproject.org-keyring
+
+exit
+
+Da utente normale (non root)
+
+netstat -tulnp
+
